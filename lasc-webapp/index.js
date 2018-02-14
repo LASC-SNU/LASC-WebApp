@@ -12,7 +12,14 @@ app.use(bodyParser.json());
 config.initialize();
 
 app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname + '/public/index.html'));
+  if(config.getUser()){
+  console.log("1");
+  res.redirect('http://localhost:8080/dashboard');
+  }
+  else{
+    res.sendFile(path.join(__dirname + '/public/index.html'));
+    console.log("2");
+  }
 });
 
 app.get('/dashboard',function(req,res){
