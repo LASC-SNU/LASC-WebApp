@@ -1,0 +1,18 @@
+{
+  "name": "lasc-webapp",
+  "version": "1.0.0",
+  "description": "LASC-Webapp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shashvat Kedia",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "firebase": "^4.9.1",
+    "firebase-admin": "^5.8.2",
+    "firebaseui": "^2.6.0"
+  }
+}
