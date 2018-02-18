@@ -33,6 +33,10 @@ app.post('/public/dashboard',function(req,res){
   res.json({user : currentUser});
 });
 
+app.get('/public/classes',function(req,res){
+  res.sendFile(path.join(__dirname + '/public/map-google.html'));
+});
+
 app.post('/public/login',function(req,res){
   var id_token = req.body.id;
   var credential = firebase.auth.GoogleAuthProvider.credential(id_token);
