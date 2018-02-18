@@ -5,38 +5,46 @@ const bodyParser = require('body-parser');
 const config = require('./public/js/config.js');
 const path = require('path');
 
+var user = null;
+
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 config.initialize();
 
-app.get('/',function(req,res){
+app.get('/public/login',function(req,res){
   if(config.getUser()){
   console.log("1");
   res.redirect('http://localhost:8080/dashboard');
   }
   else{
-    res.sendFile(path.join(__dirname + '/public/index.html'));
+    res.sendFile(path.join(__dirname + '/public/login.html'));
     console.log("2");
   }
 });
 
-app.get('/dashboard',function(req,res){
-  res.sendFile(path.join(__dirname + '/public/dashboard.html'));
+app.get('/public/dashboard',function(req,res){
+  res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
-app.post('/',function(req,res){
+app.post('/public/dashboard',function(req,res){
+  var currentUser = user;
+  res.json({user : currentUser});
+});
+
+app.post('/public/login',function(req,res){
   var id_token = req.body.id;
   var credential = firebase.auth.GoogleAuthProvider.credential(id_token);
   firebase.auth().signInWithCredential(credential).then(function(newUser){
-    console.log(config.getUser())
+    user = config.getUser();
+    console.log(user);
+    res.json({redirect : '/public/dashboard',user : firebase.auth().currentUser});
   }).catch(function(error){
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log(errorCode,errorMessage);
   });
-  res.json({redirect : '/dashboard'});
 });
 
 app.listen(8080,function(){

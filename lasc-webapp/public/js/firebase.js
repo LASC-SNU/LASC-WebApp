@@ -8,25 +8,27 @@ $(document).ready(function(){
     messagingSenderId: "979121797718"
   };
   firebase.initializeApp(config);
-  console.log("1");
 });
 
 function onSignIn(googleUser){
   console.log('Google Auth Response',googleUser);
    var unsubscribe = firebase.auth().onAuthStateChanged(function(newUser){
-     unsubscribe();
-     console.log(newUser);
-    if(!isUserEqual(googleUser,newUser)){
-      var id_token = googleUser.getAuthResponse().id_token;
-      $.post('http://localhost:8080/',{id : id_token},function(data){
-        window.location = data.redirect;
-      });
-    }
-    else {
-      console.log('User already signed-in Firebase.');
-      window.location = '/dashboard';
-    }
-  });
+     if(newUser){
+       window.location = '/public/dashboard';
+     }
+     else{
+       var id_token = googleUser.getAuthResponse().id_token;
+       $.post('http://localhost:8080/public/login',{id : id_token},function(data){
+         if(data.user){
+         window.location = data.redirect;
+       }
+       });
+     }
+   });
+ }
+
+function getCurrentUser(){
+  return firebase.auth().currentUser;
 }
 
 function isUserEqual(googleUser,newUser){
