@@ -16,5 +16,14 @@ function getCurrentUser(){
   return firebase.auth().currentUser;
 }
 
+function logout(){
+  firebase.auth().signOut().then(function(){
+
+  }).catch(function(error){
+    console.log(error.code,error.message);
+  });
+}
+
 module.exports.initialize = initialize;
 module.exports.getUser = getCurrentUser;
+module.exports.logout = logout;

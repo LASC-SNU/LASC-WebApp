@@ -32,7 +32,7 @@ $(document).ready(function(){
                 $("#csd201").html("Class Added");
                 $("#csd201").removeAttr("href");
               }
-              if(classdata.EED208){
+              if(classData.EED208){
                 $("#eed208").html("Class Added");
                 $("#eed208").removeAttr("href");
               }
@@ -61,93 +61,89 @@ $(document).ready(function(){
           $("#ced101").on('click',function(){
             var classesRef = firebase.database().ref('/users/' + data.user.uid + '/classes/')
             var subjectRef = classesRef.child("CED101");
-            subjectRef.set({Attendance : 0});
+            checkSubject(subjectRef);
             $("#ced101").html("Class Added");
             $("#ced101").removeAttr("href");
           });
           $("#med209").on('click',function(){
             var classesRef = firebase.database().ref('/users/' + data.user.uid + '/classes/')
             var subjectRef = classesRef.child("MED209");
-            subjectRef.set({Attendance : 0});
+            checkSubject(subjectRef);
             $("#med209").html("Class Added");
             $("#med209").removeAttr("href");
           });
           $("#csd101").on('click',function(){
             var classesRef = firebase.database().ref('/users/' + data.user.uid + '/classes/')
             var subjectRef = classesRef.child("CSD101");
-            subjectRef.set({Attendance : 0});
+            checkSubject(subjectRef);
             $("#csd101").html("Class Added");
             $("#csd101").removeAttr("href");
           });
           $("#eed102").on('click',function(){
             var classesRef = firebase.database().ref('/users/' + data.user.uid + '/classes/')
             var subjectRef = classesRef.child("EED102");
-            subjectRef.set({Attendance : 0});
+            checkSubject(subjectRef);
             $("#eed102").html("Class Added");
             $("#eed102").removeAttr("href");
           });
           $("#csd201").on('click',function(){
             var classesRef = firebase.database().ref('/users/' + data.user.uid + '/classes/')
             var subjectRef = classesRef.child("CSD201");
-            subjectRef.set({Attendance : 0});
+            checkSubject(subjectRef);
             $("#csd201").html("Class Added");
             $("#csd201").removeAttr("href");
           });
           $("#eed208").on('click',function(){
             var classesRef = firebase.database().ref('/users/' + data.user.uid + '/classes/')
             var subjectRef = classesRef.child("EED208");
-            subjectRef.set({Attendance : 0});
+            checkSubject(subjectRef);
             $("#eed208").html("Class Added");
             $("#eed208").removeAttr("href");
           });
           $("#eed204").on('click',function(){
             var classesRef = firebase.database().ref('/users/' + data.user.uid + '/classes/')
             var subjectRef = classesRef.child("EED204");
-            subjectRef.set({Attendance : 0});
+            checkSubject(subjectRef);
             $("#eed204").html("Class Added");
             $("#eed204").removeAttr("href");
           });
           $("#mat104").on('click',function(){
             var classesRef = firebase.database().ref('/users/' + data.user.uid + '/classes/')
             var subjectRef = classesRef.child("MAT104");
-            subjectRef.set({Attendance : 0});
+            checkSubject(subjectRef);
             $("#mat104").html("Class Added");
             $("#mat104").removeAttr("href");
           });
           $("#phy102").on('click',function(){
             var classesRef = firebase.database().ref('/users/' + data.user.uid + '/classes/')
             var subjectRef = classesRef.child("PHY102");
-            subjectRef.set({Attendance : 0});
+            checkSubject(subjectRef);
             $("#phy102").html("Class Added");
             $("#phy102").removeAttr("href");
           });
           $("#csd204").on('click',function(){
             var classesRef = firebase.database().ref('/users/' + data.user.uid + '/classes/')
             var subjectRef = classesRef.child("CSD204");
-            subjectRef.set({Attendance : 0});
+            checkSubject(subjectRef);
             $("#csd204").html("Class Added");
             $("#csd204").removeAttr("href");
           });
           $("#eed205").on('click',function(){
             var classesRef = firebase.database().ref('/users/' + data.user.uid + '/classes/')
             var subjectRef = classesRef.child("EED205");
-            subjectRef.set({Attendance : 0});
+            checkSubject(subjectRef);
             $("#eed205").html("Class Added");
             $("#eed205").removeAttr("href");
           });
         }
-        else{
           $("#editData").on('click',function(){
             dataPresent = 1;
             var rollno = $("#userRollNo").val();
-            var department = $("#userStream").value;
+            var department = 1;
             $.post('http://localhost:8080/public/updateInfo',{RollNo : rollno,Department : department,user : data.user},function(){
-              $("#userName").val(name);
               $("#userRollNo").val(rollno);
-              $("#userEmail").val(email);
             })
           });
-        }
       });
     }
     else{
@@ -155,3 +151,11 @@ $(document).ready(function(){
     }
   });
 })
+
+function checkSubject(subjectRef){
+  subjectRef.once('value',function(subject){
+    if(!subject.exists()){
+      subjectRef.set({Attendance : 0});
+    }
+  });
+}

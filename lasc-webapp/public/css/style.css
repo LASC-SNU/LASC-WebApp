@@ -729,6 +729,10 @@ Wave Effects
 .waves-effect.waves-light .waves-ripple {
   background-color: rgba(255, 255, 255, 0.45); }
 
+  .googlebutton {
+    top : 15px;
+  }
+
 .waves-effect.waves-red .waves-ripple {
   background-color: rgba(244, 67, 54, 0.7); }
 

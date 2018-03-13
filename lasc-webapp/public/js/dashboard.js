@@ -7,17 +7,15 @@ $(document).ready(function(){
       window.location = '/public/login';
     }
   });
+  $("#logoutButton").on('click',function(){
+    $.get("http://localhost:8080/public/logout",function(data){
+      window.location = data.redirect;
+    })
+  });
 })
 
 function display(data){
   $("#userName").text(data.user.displayName);
   $("#userNameh3").text(data.user.displayName);
   $(".userProfileImage").attr("src",data.user.photoURL);
-}
-
-function markAttendance(data,sub){
-  var database = firebase.database();
-  database.ref('user/' + data.user.uid).set({
-    sub : 1
-  })
 }

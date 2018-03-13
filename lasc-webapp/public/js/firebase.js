@@ -11,7 +11,6 @@ $(document).ready(function(){
 });
 
 function onSignIn(googleUser){
-  console.log('Google Auth Response',googleUser);
    var unsubscribe = firebase.auth().onAuthStateChanged(function(newUser){
      if(newUser){
        window.location = '/public/dashboard';
