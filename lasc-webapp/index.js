@@ -37,6 +37,17 @@ app.get('/public/classes',function(req,res){
   res.sendFile(path.join(__dirname + '/public/map-google.html'));
 });
 
+app.post('/public/updateInfo',function(req,res){
+  console.log(req.body.Name);
+  firebase.database().ref('/users/' + req.body.user.uid + '/data/').set({
+    Name : req.body.Name,
+    Email : req.body.Email,
+    RollNo : req.body.RollNo,
+  //  Department : req.body.Department
+  });
+  res.json({redirect : '/public/classes'});
+});
+
 app.post('/public/login',function(req,res){
   var id_token = req.body.id;
   var credential = firebase.auth.GoogleAuthProvider.credential(id_token);
