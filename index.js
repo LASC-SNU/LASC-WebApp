@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const config = require('./public/js/config.js');
 const path = require('path');
 
+const port = process.env.PORT || 8080;
+
 var user = null;
 
 app.use(express.static(path.join(__dirname + '/public')));
@@ -42,6 +44,7 @@ app.get('/public/classes',function(req,res){
 app.post('/public/updateInfo',function(req,res){
   firebase.database().ref('/users/' + req.body.user.uid + '/data/').set({
     RollNo : req.body.RollNo,
+    Email : req.body.user.email
   //  Department : req.body.Department
   });
   res.json({redirect : '/public/classes'});
@@ -60,6 +63,6 @@ app.post('/public/login',function(req,res){
   });
 });
 
-app.listen(8080,function(){
-  console.log("Listening to port 8080");
+app.listen(port,function(){
+  console.log("Listening to port" + port);
 });

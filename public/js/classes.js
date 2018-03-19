@@ -3,6 +3,7 @@ $(document).ready(function(){
     if(data.user != null){
       $(".userProfileImage").attr("src",data.user.photoURL);
       $("#userName").text(data.user.displayName);
+      console.log(data.user);
       var dataPresent = 0;
       var userData = firebase.database().ref('/users/' + data.user.uid + '/data').once('value',function(snapshot){
         if(snapshot.exists()){
