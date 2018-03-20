@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $.post('http://localhost:8080/public/dashboard',{},function(data){
+  $.post('/public/dashboard',{},function(data){
     if(data.user != null){
       $(".userProfileImage").attr("src",data.user.photoURL);
       $("#userName").text(data.user.displayName);
@@ -141,7 +141,7 @@ $(document).ready(function(){
             dataPresent = 1;
             var rollno = $("#userRollNo").val();
             var department = 1;
-            $.post('http://localhost:8080/public/updateInfo',{RollNo : rollno,Department : department,user : data.user},function(){
+            $.post('/public/updateInfo',{RollNo : rollno,Department : department,user : data.user},function(){
               $("#userRollNo").val(rollno);
             })
           });

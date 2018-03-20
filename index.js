@@ -17,7 +17,7 @@ config.initialize();
 
 app.get('/public/login',function(req,res){
   if(config.getUser() != null){
-  res.redirect('http://localhost:8080/public/dashboard');
+  res.redirect('/public/dashboard');
   }
   else{
     res.sendFile(path.join(__dirname + '/public/login.html'));

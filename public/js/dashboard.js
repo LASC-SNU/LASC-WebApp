@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $.post('http://localhost:8080/public/dashboard',{},function(data){
+  $.post('/public/dashboard',{},function(data){
     if(data.user != null){
       display(data);
       var classesData = firebase.database().ref('/users/' + data.user.uid + '/classes/').once('value',function(snapshot){
@@ -101,7 +101,7 @@ $(document).ready(function(){
     }
   });
   $("#logoutButton").on('click',function(){
-    $.get("http://localhost:8080/public/logout",function(data){
+    $.get("/public/logout",function(data){
       window.location = data.redirect;
     })
   });
