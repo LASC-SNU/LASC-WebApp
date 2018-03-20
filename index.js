@@ -43,6 +43,7 @@ app.get('/public/classes',function(req,res){
 
 app.post('/public/updateInfo',function(req,res){
   firebase.database().ref('/users/' + req.body.user.uid + '/data/').set({
+    Name : req.body.user.displayName,
     RollNo : req.body.RollNo,
     Email : req.body.user.email
   //  Department : req.body.Department
