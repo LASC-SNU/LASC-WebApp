@@ -17,7 +17,7 @@ function onSignIn(googleUser){
      }
      else{
        var id_token = googleUser.getAuthResponse().id_token;
-       $.post('http://localhost:8080/public/login',{id : id_token},function(data){
+       $.post('/public/login',{id : id_token},function(data){
          if(data.user){
          window.location = data.redirect;
        }
