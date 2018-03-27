@@ -23,7 +23,7 @@ $(document).ready(function() {
                             $(".eed205").hide();
                             if (subjectData.CED101) {
                                 init(".ced101", "#ced101AttePercentage", "#ced101ProgressBar", subjectData.CED101.Attendance, subjectClass.CED101.ClassHeld);
-                                if ((date.getDay() == 2 || date.getDay() == 4) && ((date.getHours() == 19) || (date.getHours() == 18 && date.getMinutes() == 0))) {
+                                if ((date.getDay() == 2 || date.getDay() == 4) && ((date.getHours() == 22) || (date.getHours() == 23 && date.getMinutes() == 0))) {
                                     initButton("#ced101AtteMark", subjectData.CED101.TimeStamp, '/users/' + data.user.uid + '/classes/CED101', subjectClass.CED101.ClassHeld + 1);
                                     $("#ced101AtteMark").on('click', function() {
                                         markAttendance('/users/' + data.user.uid + '/classes/CED101', subjectData.CED101.Attendance + 1, "#ced101AtteMark", subjectClass.CED101.ClassHeld);
