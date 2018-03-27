@@ -161,11 +161,6 @@ $(document).ready(function() {
             window.location = '/public/login';
         }
     });
-    $("#logoutButton").on('click', function() {
-        $.get("/public/logout", function(data) {
-            window.location = data.redirect;
-        })
-    });
 })
 
 function display(data) {
