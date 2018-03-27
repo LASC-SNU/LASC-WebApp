@@ -131,7 +131,7 @@ function checkTimeStamp(classURL) {
             if (timeStamp.getFullYear() == curDate.getFullYear() && timeStamp.getMonth() == curDate.getMonth() && timeStamp.getDay() == curDate.getDay()) {
                 return 0;
             } else {
-                return 0;
+                return 1;
             }
         }
     });
