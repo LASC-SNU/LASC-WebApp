@@ -110,6 +110,29 @@ var scheduler = schedule.scheduleJob(rule, function() {
     });
 });
 
-function incrClassHeld(classUrl, classHeld) {
-    firebase.database().ref(classUrl).set({ ClassHeld: classHeld });
+function incrClassHeld(classURL, classHeld) {
+    var flag = checkTimeStamp(classURL);
+    if (flag == 1) {
+        var curDate = new Date();
+        firebase.database().ref(classURL).set({
+            ClassHeld: classHeld,
+            TimeStamp: curDate.toString()
+        });
+    }
+}
+
+function checkTimeStamp(classURL) {
+    var curDate = new Date();
+    var data = firebase.database().ref(classURL).value('once', function(snapshot) {
+        if (snapshot.exists()) {
+            var subjectData = snapshot.val();
+            var timeStampString = subjectData.TimeStamp;
+            var timeStamp = new Date(timeStampString);
+            if (timeStamp.getFullYear() == curDate.getFullYear() && timeStamp.getMonth() == curDate.getMonth() && timeStamp.getDay() == curDate.getDay()) {
+                return 0;
+            } else {
+                return 0;
+            }
+        }
+    });
 }
