@@ -16,6 +16,10 @@ app.use(bodyParser.json());
 
 config.initialize();
 
+app.get('/', function(res, req) {
+    res.redirect('/public/login');
+});
+
 app.get('/public/login', function(req, res) {
     if (config.getUser() != null) {
         res.redirect('/public/dashboard');

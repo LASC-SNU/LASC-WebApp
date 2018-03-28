@@ -2,6 +2,17 @@ $(document).ready(function() {
     $.post('/public/dashboard', {}, function(data) {
         if (data.user != null) {
             display(data);
+            $(".ced101").hide();
+            $(".med209").hide();
+            $(".csd101").hide();
+            $(".eed102").hide();
+            $(".csd201").hide();
+            $(".eed208").hide();
+            $(".eed204").hide();
+            $(".mat104").hide();
+            $(".phy102").hide();
+            $(".csd204").hide();
+            $(".eed205").hide();
             var classesData = firebase.database().ref('/users/' + data.user.uid + '/classes/').once('value', function(snapshot) {
                 if (snapshot.exists()) {
                     var subjectClass;
@@ -10,17 +21,6 @@ $(document).ready(function() {
                             subjectClass = subjectSnapshot.val();
                             var date = new Date();
                             var subjectData = snapshot.val();
-                            $(".ced101").hide();
-                            $(".med209").hide();
-                            $(".csd101").hide();
-                            $(".eed102").hide();
-                            $(".csd201").hide();
-                            $(".eed208").hide();
-                            $(".eed204").hide();
-                            $(".mat104").hide();
-                            $(".phy102").hide();
-                            $(".csd204").hide();
-                            $(".eed205").hide();
                             if (subjectData.CED101) {
                                 init(".ced101", "#ced101AttePercentage", "#ced101ProgressBar", subjectData.CED101.Attendance, subjectClass.CED101.ClassHeld);
                                 if ((date.getDay() == 2 || date.getDay() == 4) && ((date.getHours() == 22) || (date.getHours() == 23 && date.getMinutes() == 0))) {
