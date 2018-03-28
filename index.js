@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const config = require('./public/js/config.js');
 const path = require('path');
 const schedule = require('node-schedule');
+const later = require('later');
 
 const port = process.env.PORT || 8080;
 
@@ -68,12 +69,11 @@ app.listen(port, function() {
     console.log("Listening to port" + port);
 });
 
-var rule = new schedule.RecurrenceRule();
-rule.dayOfWeek = [0, new schedule.Range(1, 6)];
-rule.hour = 12
-rule.minute = 0
+var schedule = later.parse.recur().on(24).hour();
+later.date.localTime();
+var timer = later.setInterval(incrClass, schedule);
 
-var scheduler = schedule.scheduleJob(rule, function() {
+function incrClass() {
     var date = new Date();
     firebase.database().ref("/subject/").once('value', function(snapshot) {
         if (snapshot.exists()) {
@@ -108,7 +108,7 @@ var scheduler = schedule.scheduleJob(rule, function() {
             }
         }
     });
-});
+}
 
 function incrClassHeld(classURL, classHeld) {
     var flag = checkTimeStamp(classURL);
