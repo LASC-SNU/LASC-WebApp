@@ -68,7 +68,7 @@ app.listen(port, function() {
     console.log("Listening to port" + port);
 });
 
-/*var schedule = later.parse.recur().on(24).hour();
+var schedule = later.parse.recur().on(3).hour();
 later.date.localTime();
 var timer = later.setInterval(incrClass, schedule);
 
@@ -134,4 +134,4 @@ function checkTimeStamp(classURL) {
             }
         }
     });
-}*/
+}
