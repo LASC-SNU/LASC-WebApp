@@ -4,7 +4,6 @@ const firebase = require('firebase');
 const bodyParser = require('body-parser');
 const config = require('./public/js/config.js');
 const path = require('path');
-const schedule = require('node-schedule');
 const later = require('later');
 
 const port = process.env.PORT || 8080;
