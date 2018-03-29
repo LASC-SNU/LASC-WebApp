@@ -46,7 +46,6 @@ app.post('/public/updateInfo', function(req, res) {
         RollNo: req.body.RollNo,
         Email: req.body.user.email,
         Department: req.body.Department
-            //  Department : req.body.Department
     });
     res.json({ redirect: '/public/classes' });
 });
