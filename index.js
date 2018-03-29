@@ -17,14 +17,10 @@ app.use(bodyParser.json());
 config.initialize();
 
 app.get('/public/login', function(req, res) {
-    if (config.getUser() != null) {
-        res.redirect('/public/dashboard');
-    } else {
-        var schedule = later.parse.recur().on(4).hour();
-        later.date.localTime();
-        var timer = later.setInterval(incrClass, schedule);
-        res.sendFile(path.join(__dirname + '/public/login.html'));
-    }
+    var schedule = later.parse.recur().on(4).hour();
+    later.date.localTime();
+    var timer = later.setInterval(incrClass, schedule);
+    res.sendFile(path.join(__dirname + '/public/login.html'));
 });
 
 app.get('/public/dashboard', function(req, res) {
