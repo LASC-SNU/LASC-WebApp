@@ -17,9 +17,9 @@ app.use(bodyParser.json());
 config.initialize();
 
 app.get('/public/login', function(req, res) {
-    /*var schedule = later.parse.recur().on(4).hour();
+    var schedule = later.parse.recur().on(4).hour();
     later.date.localTime();
-    var timer = later.setInterval(incrClass, schedule);*/
+    var timer = later.setInterval(incrClass, schedule);
     res.sendFile(path.join(__dirname + '/public/login.html'));
 });
 
