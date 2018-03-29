@@ -184,6 +184,7 @@ $(document).ready(function() {
                         Email: user.email,
                         Department: department
                     });
+                    window.location = "/public/classes";
                 });
             });
             $("#logoutButton").on('click', function() {
