@@ -51,11 +51,10 @@
                         if (errorCode === 'auth/account-exists-with-different-credential') {
                             alert('You have already signed up with a different auth provider for that email.');
                         } else {
-                            console.error(error);
+                            //console.error(error);
                         }
                     });
                 } else {
-                    console.log('User already signed-in Firebase.');
                     window.location = "/public/dashboard";
                 }
             });
