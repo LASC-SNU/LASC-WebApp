@@ -4,9 +4,31 @@ $(document).ready(function() {
             $(".userProfileImage").attr("src", user.photoURL);
             $("#userName").text(user.displayName);
             var dataPresent = 0;
+            $("#ced101").removeAttr("href");
+            $("#med209").removeAttr("href");
+            $("#csd101").removeAttr("href");
+            $("#csd201").removeAttr("href");
+            $("#eed102").removeAttr("href");
+            $("#csd204").removeAttr("href");
+            $("#eed205").removeAttr("href");
+            $("#mat104").removeAttr("href");
+            $("#phy102").removeAttr("href");
+            $("#eed204").removeAttr("href");
+            $("#eed208").removeAttr("href");
             var userData = firebase.database().ref('/users/' + user.uid + '/data').once('value', function(snapshot) {
                 if (snapshot.exists()) {
                     dataPresent = 1;
+                    $("#ced101").attr("href", "");
+                    $("#med209").attr("href", "");
+                    $("#csd101").attr("href", "");
+                    $("#csd201").attr("href", "");
+                    $("#eed102").attr("href", "");
+                    $("#csd204").attr("href", "");
+                    $("#eed205").attr("href", "");
+                    $("#mat104").attr("href", "");
+                    $("#phy102").attr("href", "");
+                    $("#eed204").attr("href", "");
+                    $("#eed208").attr("href", "");
                     var userData = snapshot.val();
                     $("#userRollNo").val(userData.RollNo);
                     $("#userStream").val(userData.Department);
