@@ -136,6 +136,20 @@ $(document).ready(function() {
                         $("#eed205").html("Class Added");
                         $("#eed205").removeAttr("href");
                     });
+                } else {
+                    $("#ced101").removeAttr("href");
+                    $("#med209").removeAttr("href");
+                    $("#csd101").removeAttr("href");
+                    $("#csd201").removeAttr("href");
+                    $("#eed102").removeAttr("href");
+                    $("#csd204").removeAttr("href");
+                    $("#eed205").removeAttr("href");
+                    $("#mat104").removeAttr("href");
+                    $("#phy102").removeAttr("href");
+                    $("#eed204").removeAttr("href");
+                    $("#eed208").removeAttr("href");
+                    alert("Enter your details first");
+                    window.location = "/public/classes#userRollNo"
                 }
                 $("#editData").on('click', function() {
                     dataPresent = 1;

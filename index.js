@@ -17,6 +17,9 @@ app.use(bodyParser.json());
 config.initialize();
 
 app.get('/', function(res, req) {
+    var schedule = later.parse.recur().on(24).hour();
+    later.date.localTime();
+    var timer = later.setInterval(incrClass, schedule);
     res.redirect('/public/login');
 });
 
@@ -71,10 +74,6 @@ app.post('/public/login', function(req, res) {
 app.listen(port, function() {
     console.log("Listening to port" + port);
 });
-
-var schedule = later.parse.recur().on(3).hour();
-later.date.localTime();
-var timer = later.setInterval(incrClass, schedule);
 
 function incrClass() {
     var date = new Date();
