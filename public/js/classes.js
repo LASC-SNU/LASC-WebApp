@@ -3,13 +3,13 @@ $(document).ready(function() {
         if (data.user != null) {
             $(".userProfileImage").attr("src", data.user.photoURL);
             $("#userName").text(data.user.displayName);
-            console.log(data.user);
             var dataPresent = 0;
             var userData = firebase.database().ref('/users/' + data.user.uid + '/data').once('value', function(snapshot) {
                 if (snapshot.exists()) {
                     dataPresent = 1;
                     var userData = snapshot.val();
                     $("#userRollNo").val(userData.RollNo);
+                    $("#userStream").val(userData.Department);
                     var classesData = firebase.database().ref('/users/' + data.user.uid + '/classes/').once('value', function(classes) {
                         if (classes.exists()) {
                             var classData = classes.val();
@@ -154,7 +154,8 @@ $(document).ready(function() {
                 $("#editData").on('click', function() {
                     dataPresent = 1;
                     var rollno = $("#userRollNo").val();
-                    var department = 1;
+                    var dept = document.getElementById("userStream");
+                    var department = dept.options[dept.selectedIndex].text;
                     $.post('/public/updateInfo', { RollNo: rollno, Department: department, user: data.user }, function() {
                         $("#userRollNo").val(rollno);
                     })

@@ -70,7 +70,7 @@ $(document).ready(function() {
                                 }
                             }
                             if (subjectData.CSD201) {
-                                init(".csd201", "#ced101AttePercentage", "#csd201ProgressBar", subjectData.CSD201.Attendance, subjectClass.CSD201.ClassHeld);
+                                init(".csd201", "#csd201AttePercentage", "#csd201ProgressBar", subjectData.CSD201.Attendance, subjectClass.CSD201.ClassHeld);
                                 if ((date.getDay() == 2 || date.getDay() == 4) && ((date.getHours() == 22) || (date.getHours() == 23 && date.getMinutes() == 0))) {
                                     initButton("#csd201AtteMark", subjectData.CSD201.TimeStamp, '/users/' + data.user.uid + '/classes/CSD201', subjectClass.CSD201.ClassHeld + 1);
                                     $("#csd201AtteMark").on('click', function() {
@@ -182,7 +182,7 @@ function markAttendance(classURL, attendanceValue, subjectAtteMark, classHeld) {
 function init(subjectClass, subjectAttePer, subjectProgressBar, attendanceValue, classHeld) {
     $(subjectClass).show();
     $(subjectAttePer).html((attendanceValue / classHeld) * 100);
-    $(subjectProgressBar).css({ 'width': (attendanceValue / classHeld) * 100 });
+    $(subjectProgressBar).css({ 'width': ((attendanceValue / classHeld) * 100) + "%" });
 }
 
 function changeAttendaceButtonState(atteMark) {

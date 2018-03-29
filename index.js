@@ -17,9 +17,6 @@ app.use(bodyParser.json());
 config.initialize();
 
 app.get('/', function(res, req) {
-    var schedule = later.parse.recur().on(24).hour();
-    later.date.localTime();
-    var timer = later.setInterval(incrClass, schedule);
     res.redirect('/public/login');
 });
 
@@ -27,6 +24,9 @@ app.get('/public/login', function(req, res) {
     if (config.getUser() != null) {
         res.redirect('/public/dashboard');
     } else {
+        var schedule = later.parse.recur().on(4).hour();
+        later.date.localTime();
+        var timer = later.setInterval(incrClass, schedule);
         res.sendFile(path.join(__dirname + '/public/login.html'));
     }
 });
@@ -52,7 +52,8 @@ app.post('/public/updateInfo', function(req, res) {
     firebase.database().ref('/users/' + req.body.user.uid + '/data/').set({
         Name: req.body.user.displayName,
         RollNo: req.body.RollNo,
-        Email: req.body.user.email
+        Email: req.body.user.email,
+        Department: req.body.Department
             //  Department : req.body.Department
     });
     res.json({ redirect: '/public/classes' });
@@ -77,7 +78,7 @@ app.listen(port, function() {
 
 function incrClass() {
     var date = new Date();
-    firebase.database().ref("/subject/").once('value', function(snapshot) {
+    firebase.database().ref('/subject/').once('value', function(snapshot) {
         if (snapshot.exists()) {
             var data = snapshot.val();
             if (date.getDay() == 1) {
@@ -92,6 +93,7 @@ function incrClass() {
                 incrClassHeld('/subject/PHY102/', data.PHY102.ClassHeld + 1);
                 incrClassHeld('/subject/CSD204/', data.CSD204.ClassHeld + 1);
             } else if (date.getDay() == 3) {
+                console.log(1);
                 incrClassHeld('/subject/MED209/', data.MED209.ClassHeld + 1);
                 incrClassHeld('/subject/CSD101/', data.CSD101.ClassHeld + 1);
                 incrClassHeld('/subject/EED102/', data.EED102.ClassHeld + 1);
@@ -125,7 +127,7 @@ function incrClassHeld(classURL, classHeld) {
 
 function checkTimeStamp(classURL) {
     var curDate = new Date();
-    var data = firebase.database().ref(classURL).value('once', function(snapshot) {
+    var data = firebase.database().ref(classURL).once('value', function(snapshot) {
         if (snapshot.exists()) {
             var subjectData = snapshot.val();
             var timeStampString = subjectData.TimeStamp;
