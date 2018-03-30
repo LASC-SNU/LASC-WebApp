@@ -5,16 +5,38 @@ $(document).ready(function() {
             $("#userName").text(user.displayName);
             var dataPresent = 0;
             $("#ced101").removeAttr("href");
+            $("#ced101").css({'color': 'white'});
+
             $("#med209").removeAttr("href");
+            $("#med209").css({'color': 'white'});
+
             $("#csd101").removeAttr("href");
+            $("#csd101").css({'color': 'white'});
+
             $("#csd201").removeAttr("href");
+            $("#csd201").css({'color': 'white'});
+
             $("#eed102").removeAttr("href");
+            $("#eed102").css({'color': 'white'});
+
             $("#csd204").removeAttr("href");
+            $("#csd204").css({'color': 'white'});
+
             $("#eed205").removeAttr("href");
+            $("#eed205").css({'color': 'white'});
+
             $("#mat104").removeAttr("href");
+            $("#mat104").css({'color': 'white'});
+
             $("#phy102").removeAttr("href");
+            $("#phy102").css({'color': 'white'});
+
             $("#eed204").removeAttr("href");
+            $("#eed204").css({'color': 'white'});
+
             $("#eed208").removeAttr("href");
+            $("#eed208").css({'color': 'white'});
+
             var userData = firebase.database().ref('/users/' + user.uid + '/data').once('value', function(snapshot) {
                 if (snapshot.exists()) {
                     dataPresent = 1;
@@ -38,46 +60,67 @@ $(document).ready(function() {
                             if (classData.CED101) {
                                 $("#ced101").html("Class Added");
                                 $("#ced101").removeAttr("href");
+                                $("#ced101").css({'color': 'white'});
                             }
                             if (classData.MED209) {
                                 $("#med209").html("Class Added");
                                 $("#med209").removeAttr("href");
+                                $("#med209").css({'color': 'white'});
+
                             }
                             if (classData.CSD101) {
                                 $("#csd101").html("Class Added");
                                 $("#csd101").removeAttr("href");
+                                $("#csd101").css({'color': 'white'});
+
                             }
                             if (classData.EED102) {
                                 $("#eed102").html("Class Added");
                                 $("#eed102").removeAttr("href");
+                                $("#eed102").css({'color': 'white'});
+
                             }
                             if (classData.CSD201) {
                                 $("#csd201").html("Class Added");
                                 $("#csd201").removeAttr("href");
+                                $("#csd201").css({'color': 'white'});
+
                             }
                             if (classData.EED208) {
                                 $("#eed208").html("Class Added");
                                 $("#eed208").removeAttr("href");
+                                $("#eed208").css({'color': 'white'});
+
                             }
                             if (classData.EED204) {
                                 $("#eed204").html("Class Added");
                                 $("#eed204").removeAttr("href");
+                                $("#eed204").css({'color': 'white'});
+
                             }
                             if (classData.MAT104) {
                                 $("#mat104").html("Class Added");
                                 $("#mat104").removeAttr("href");
+                                $("#mat104").css({'color': 'white'});
+
                             }
                             if (classData.PHY102) {
                                 $("#phy102").html("Class Added");
                                 $("#phy102").removeAttr("href");
+                                $("#phy102").css({'color': 'white'});
+
                             }
                             if (classData.CSD204) {
                                 $("#csd204").html("Class Added");
                                 $("#csd204").removeAttr("href");
+                                $("#csd204").css({'color': 'white'});
+
                             }
                             if (classData.EED205) {
                                 $("#eed205").html("Class Added");
                                 $("#eed205").removeAttr("href");
+                                $("#eed205").css({'color': 'white'});
+
                             }
                         }
                     });
@@ -87,6 +130,8 @@ $(document).ready(function() {
                         checkSubject(subjectRef);
                         $("#ced101").html("Class Added");
                         $("#ced101").removeAttr("href");
+                        $("#ced101").css({'color': 'white'});
+
                     });
                     $("#med209").on('click', function() {
                         var classesRef = firebase.database().ref('/users/' + user.uid + '/classes/')
@@ -94,6 +139,9 @@ $(document).ready(function() {
                         checkSubject(subjectRef);
                         $("#med209").html("Class Added");
                         $("#med209").removeAttr("href");
+                        $("#med209").css({'color': 'white'});
+
+
                     });
                     $("#csd101").on('click', function() {
                         var classesRef = firebase.database().ref('/users/' + user.uid + '/classes/')
@@ -101,6 +149,8 @@ $(document).ready(function() {
                         checkSubject(subjectRef);
                         $("#csd101").html("Class Added");
                         $("#csd101").removeAttr("href");
+                        $("#csd101").css({'color': 'white'});
+
                     });
                     $("#eed102").on('click', function() {
                         var classesRef = firebase.database().ref('/users/' + user.uid + '/classes/')
@@ -108,6 +158,8 @@ $(document).ready(function() {
                         checkSubject(subjectRef);
                         $("#eed102").html("Class Added");
                         $("#eed102").removeAttr("href");
+                        $("#eed102").css({'color': 'white'});
+
                     });
                     $("#csd201").on('click', function() {
                         var classesRef = firebase.database().ref('/users/' + user.uid + '/classes/')
@@ -115,6 +167,8 @@ $(document).ready(function() {
                         checkSubject(subjectRef);
                         $("#csd201").html("Class Added");
                         $("#csd201").removeAttr("href");
+                        $("#csd201").css({'color': 'white'});
+
                     });
                     $("#eed208").on('click', function() {
                         var classesRef = firebase.database().ref('/users/' + user.uid + '/classes/')
@@ -122,6 +176,8 @@ $(document).ready(function() {
                         checkSubject(subjectRef);
                         $("#eed208").html("Class Added");
                         $("#eed208").removeAttr("href");
+                        $("#eed208").css({'color': 'white'});
+
                     });
                     $("#eed204").on('click', function() {
                         var classesRef = firebase.database().ref('/users/' + user.uid + '/classes/')
@@ -129,6 +185,8 @@ $(document).ready(function() {
                         checkSubject(subjectRef);
                         $("#eed204").html("Class Added");
                         $("#eed204").removeAttr("href");
+                        $("#eed204").css({'color': 'white'});
+
                     });
                     $("#mat104").on('click', function() {
                         var classesRef = firebase.database().ref('/users/' + user.uid + '/classes/')
@@ -136,6 +194,8 @@ $(document).ready(function() {
                         checkSubject(subjectRef);
                         $("#mat104").html("Class Added");
                         $("#mat104").removeAttr("href");
+                        $("#mat104").css({'color': 'white'});
+
                     });
                     $("#phy102").on('click', function() {
                         var classesRef = firebase.database().ref('/users/' + user.uid + '/classes/')
@@ -143,6 +203,8 @@ $(document).ready(function() {
                         checkSubject(subjectRef);
                         $("#phy102").html("Class Added");
                         $("#phy102").removeAttr("href");
+                        $("#phy102").css({'color': 'white'});
+
                     });
                     $("#csd204").on('click', function() {
                         var classesRef = firebase.database().ref('/users/' + user.uid + '/classes/')
@@ -150,6 +212,8 @@ $(document).ready(function() {
                         checkSubject(subjectRef);
                         $("#csd204").html("Class Added");
                         $("#csd204").removeAttr("href");
+                        $("#csd204").css({'color': 'white'});
+
                     });
                     $("#eed205").on('click', function() {
                         var classesRef = firebase.database().ref('/users/' + user.uid + '/classes/')
@@ -157,6 +221,8 @@ $(document).ready(function() {
                         checkSubject(subjectRef);
                         $("#eed205").html("Class Added");
                         $("#eed205").removeAttr("href");
+                        $("#eed205").css({'color': 'white'});
+
                     });
                 } else {
                     $("#ced101").removeAttr("href");

@@ -181,6 +181,7 @@ function markAttendance(classURL, attendanceValue, subjectAtteMark, classHeld) {
         TimeStamp: curDate.toString()
     });
     $(subjectAtteMark).html("Attendance Marked");
+    $(subjectAtteMark).css({'color': 'white'});
     $(subjectAtteMark).removeAttr("href");
 }
 
@@ -192,6 +193,7 @@ function init(subjectClass, subjectAttePer, subjectProgressBar, attendanceValue,
 
 function changeAttendaceButtonState(atteMark) {
     $(atteMark).html("Attendance Not Started");
+    $(atteMark).css({'color': 'white'});
     $(atteMark).removeAttr("href");
 }
 
