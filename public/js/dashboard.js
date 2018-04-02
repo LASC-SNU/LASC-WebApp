@@ -159,6 +159,7 @@ $(document).ready(function() {
             });
             $("#logoutButton").on('click', function() {
                 firebase.auth().signOut().then(function() {
+                    pause(10000);
                     window.location = "/public/login";
                 });
             });
@@ -174,6 +175,16 @@ function display(user) {
     $(".userProfileImage").attr("src", user.photoURL);
 }
 
+function pause(numberMillis) {
+    var now = new Date();
+    var exitTime = now.getTime() + numberMillis;
+    while (true) {
+        now = new Date();
+        if (now.getTime() > exitTime)
+            return;
+    }
+}
+
 function markAttendance(classURL, attendanceValue, subjectAtteMark, classHeld) {
     var curDate = new Date();
     firebase.database().ref(classURL).set({
@@ -181,7 +192,7 @@ function markAttendance(classURL, attendanceValue, subjectAtteMark, classHeld) {
         TimeStamp: curDate.toString()
     });
     $(subjectAtteMark).html("Attendance Marked");
-    $(subjectAtteMark).css({'color': 'white'});
+    $(subjectAtteMark).css({ 'color': 'white' });
     $(subjectAtteMark).removeAttr("href");
 }
 
@@ -193,7 +204,7 @@ function init(subjectClass, subjectAttePer, subjectProgressBar, attendanceValue,
 
 function changeAttendaceButtonState(atteMark) {
     $(atteMark).html("Attendance Not Started");
-    $(atteMark).css({'color': 'white'});
+    $(atteMark).css({ 'color': 'white' });
     $(atteMark).removeAttr("href");
 }
 

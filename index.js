@@ -52,7 +52,6 @@ function incrClass() {
                 incrClassHeld('/subject/PHY102/', data.PHY102.ClassHeld + 1);
                 incrClassHeld('/subject/CSD204/', data.CSD204.ClassHeld + 1);
             } else if (date.getDay() == 3) {
-                console.log(1);
                 incrClassHeld('/subject/MED209/', data.MED209.ClassHeld + 1);
                 incrClassHeld('/subject/CSD101/', data.CSD101.ClassHeld + 1);
                 incrClassHeld('/subject/EED102/', data.EED102.ClassHeld + 1);
