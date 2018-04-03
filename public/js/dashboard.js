@@ -47,7 +47,7 @@ $(document).ready(function() {
                             }
                             if (subjectData.CSD101) {
                                 init(".csd101", "#csd101AttePercentage", "#csd101ProgressBar", subjectData.CSD101.Attendance, subjectClass.CSD101.ClassHeld);
-                                if ((date.getDay() == 3 && (date.getHours() == 21)) || (date.getDay() == 5 && (date.getHours() == 21))) {
+                                if ((date.getDay() == 3 && (date.getHours() == 21)) || (date.getDay() == 5 && (date.getHours() == 21)) || (date.getDay() == 2 && (date.getHours() == 21)) || (date.getDay() == 1 && (date.getHours() == 21))) {
                                     initButton("#csd101AtteMark", subjectData.CSD101.TimeStamp, '/users/' + user.uid + '/classes/CSD101', subjectClass.CSD101.ClassHeld + 1);
                                     $("#csd101AtteMark").on('click', function() {
                                         markAttendance('/users/' + user.uid + '/classes/CSD101', subjectData.CSD101.Attendance + 1, "#csd101AtteMark", subjectClass.CSD101.ClassHeld);
@@ -95,7 +95,7 @@ $(document).ready(function() {
                             }
                             if (subjectData.EED204) {
                                 init(".eed204", "#eed204AttePercentage", "#eed204ProgressBar", subjectData.EED204.Attendance, subjectClass.EED204.ClassHeld);
-                                if ((date.getDay() == 3 && date.getHours() == 20) || (date.getDay() == 1 && date.getHours() == 20)) {
+                                if ((date.getDay() == 3 && date.getHours() == 20) || (date.getDay() == 1 && date.getHours() == 20) || (date.getDay() == 2 && (date.getHours() == 20)) || (date.getDay() == 2 && (date.getHours() == 21))) {
                                     initButton("#eed204AtteMark", subjectData.EED204.TimeStamp, '/users/' + user.uid + '/classes/EED204', subjectClass.EED204.ClassHeld + 1);
                                     $("#eed204AtteMark").on('click', function() {
                                         markAttendance('/users/' + user.uid + '/classes/EED204', subjectData.EED204.Attendance + 1, "#eed204AtteMark", subjectClass.EEd204.ClassHeld);
