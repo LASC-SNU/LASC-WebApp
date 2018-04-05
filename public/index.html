@@ -28,7 +28,16 @@
     </script>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
     <script src="https://apis.google.com/js/platform.js"></script>
-    <script src="/js/firebase.js">
+    <script>
+    var config = {
+        apiKey: "AIzaSyB-fLQYirQqjwFOoYd3rIrJMxmXt6TYxbg",
+        authDomain: "lasc-webapp.firebaseapp.com",
+        databaseURL: "https://lasc-webapp.firebaseio.com",
+        projectId: "lasc-webapp",
+        storageBucket: "lasc-webapp.appspot.com",
+        messagingSenderId: "979121797718"
+    };
+    firebase.initializeApp(config);
     </script>
     <script src="/js/dashboard.js">
     </script>

@@ -40,6 +40,7 @@
         firebase.initializeApp(config);
 
         function onSignIn(googleUser) {
+          console.log(googleUser);
             var unsubscribe = firebase.auth().onAuthStateChanged(function(firebaseUser) {
                 unsubscribe();
                 if (!isUserEqual(googleUser, firebaseUser)) {
