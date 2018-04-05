@@ -143,7 +143,7 @@ $(document).ready(function() {
                             }
                             if (subjectData.EED205) {
                                 init(".eed205", "#eed205AttePercentage", "#eed205ProgressBar", subjectData.EED205.Attendance, subjectClass.EED205.ClassHeld);
-                                if ((date.getDay() == 2 && (date.getHours() == 22)) || (daye.getDay() == 3 && (date.getHours() == 22)) || (date.getDay() == 5 && (date.getHours() == 22))) {
+                                if ((date.getDay() == 2 && (date.getHours() == 22)) || (date.getDay() == 3 && (date.getHours() == 22)) || (date.getDay() == 5 && (date.getHours() == 22))) {
                                     initButton("#eed205AtteMark", subjectData.EED205.TimeStamp, '/users/' + user.uid + '/classes/EED205', subjectClass.EED205.ClassHeld + 1);
                                     $("#eed205AtteMark").on('click', function() {
                                         markAttendance('/users/' + user.uid + '/classes/EED205', subjectData.EED205.Attendance + 1, "#eed205AtteMark", subjectClass.EED205.ClassHeld);
