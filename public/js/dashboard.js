@@ -2,17 +2,11 @@ $(document).ready(function() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             display(user);
-            $(".ced101").hide();
-            $(".med209").hide();
             $(".csd101").hide();
-            $(".eed102").hide();
-            $(".csd201").hide();
-            $(".eed207").hide();
-            $(".eed204").hide();
-            $(".mat104").hide();
-            $(".phy102").hide();
-            $(".csd204").hide();
-            $(".eed205").hide();
+            $(".eco203").hide();
+            $(".eed201").hide();
+            $(".phy101").hide();
+            $(".med201").hide();
             var classesData = firebase.database().ref('/users/' + user.uid + '/classes/').once('value', function(snapshot) {
                 if (snapshot.exists()) {
                     var subjectClass;
@@ -21,33 +15,9 @@ $(document).ready(function() {
                             subjectClass = subjectSnapshot.val();
                             var date = new Date();
                             var subjectData = snapshot.val();
-                            if (subjectData.CED101) {
-                                init(".ced101", "#ced101AttePercentage", "#ced101ProgressBar", subjectData.CED101.Attendance, subjectClass.CED101.ClassHeld);
-                                if ((date.getDay() == 2 || date.getDay() == 4) && date.getHours() == 20) {
-                                    initButton("#ced101AtteMark", subjectData.CED101.TimeStamp, '/users/' + user.uid + '/classes/CED101', subjectClass.CED101.ClassHeld + 1);
-                                    $("#ced101AtteMark").on('click', function() {
-                                        markAttendance('/users/' + user.uid + '/classes/CED101', subjectData.CED101.Attendance + 1, "#ced101AtteMark", subjectClass.CED101.ClassHeld);
-                                        init(".ced101", "#ced101AttePercentage", "#ced101ProgressBar", subjectData.CED101.Attendance + 1, subjectClass.CED101.ClassHeld);
-                                    });
-                                } else {
-                                    changeAttendaceButtonState("#ced101AtteMark");
-                                }
-                            }
-                            if (subjectData.MED209) {
-                                init(".med209", "#med209AttePercentage", "#med209ProgressBar", subjectData.MED209.Attendance, subjectClass.MED209.ClassHeld);
-                                if ((date.getDay() == 2 && (date.getHours() == 22)) || (date.getDay() == 4 && (date.getHours() == 20))) {
-                                    initButton("#med209AtteMark", subjectData.MED209.TimeStamp, '/users/' + user.uid + '/classes/MED209', subjectClass.MED209.ClassHeld + 1);
-                                    $("#med209AtteMark").on('click', function() {
-                                        markAttendance('/users/' + user.uid + '/classes/MED209', subjectData.MED209.Attendance + 1, "#med209AtteMark", subjectClass.MED209.ClassHeld);
-                                        init(".med209", "#med209AttePercentage", "#med209ProgressBar", subjectData.MED209.Attendance + 1, subjectClass.MED209.ClassHeld);
-                                    });
-                                } else {
-                                    changeAttendaceButtonState("#med209AtteMark");
-                                }
-                            }
                             if (subjectData.CSD101) {
                                 init(".csd101", "#csd101AttePercentage", "#csd101ProgressBar", subjectData.CSD101.Attendance, subjectClass.CSD101.ClassHeld);
-                                if ((date.getDay() == 3 && (date.getHours() == 21)) || (date.getDay() == 5 && (date.getHours() == 21)) || (date.getDay() == 2 && (date.getHours() == 21)) || (date.getDay() == 1 && (date.getHours() == 21))) {
+                                if ((date.getDay() == 1 && (date.getHours() == 21)) || (date.getDay() == 3 && (date.getHours() == 21))) {
                                     initButton("#csd101AtteMark", subjectData.CSD101.TimeStamp, '/users/' + user.uid + '/classes/CSD101', subjectClass.CSD101.ClassHeld + 1);
                                     $("#csd101AtteMark").on('click', function() {
                                         markAttendance('/users/' + user.uid + '/classes/CSD101', subjectData.CSD101.Attendance + 1, "#csd101AtteMark", subjectClass.CSD101.ClassHeld);
@@ -57,100 +27,52 @@ $(document).ready(function() {
                                     changeAttendaceButtonState("#csd101AtteMark");
                                 }
                             }
-                            if (subjectData.EED102) {
-                                init(".eed102", "#eed102AttePercentage", "#eed102ProgressBar", subjectData.EED102.Attendance, subjectClass.EED102.ClassHeld);
-                                if (((date.getDay() == 1 || date.getDay() == 3) && date.getHours() == 21) || (date.getDay() == 3 && date.getHours() == 21)) {
-                                    initButton("#eed102AtteMark", subjectData.EED102.TimeStamp, '/users/' + user.uid + '/classes/EED102', subjectClass.EED102.ClassHeld + 1);
-                                    $("#eed102AtteMark").on('click', function() {
-                                        markAttendance('/users/' + user.uid + '/classes/EED102', subjectData.EED102.Attendance + 1, "#eed102AtteMark", subjectClass.EED102.ClassHeld);
-                                        init(".eed102", "#eed102AttePercentage", "#eed102ProgressBar", subjectData.EED102.Attendance + 1, subjectClass.EED102.ClassHeld);
+                            if (subjectData.ECO203) {
+                                init(".eco203", "#eco203AttePercentage", "#eco203ProgressBar", subjectData.ECO203.Attendance, subjectClass.ECO203.ClassHeld);
+                                if (((date.getDay() == 2 || date.getDay() == 4) && date.getHours() == 21)) {
+                                    initButton("#eco203AtteMark", subjectData.EED102.TimeStamp, '/users/' + user.uid + '/classes/ECO203', subjectClass.ECO203.ClassHeld + 1);
+                                    $("#eco203AtteMark").on('click', function() {
+                                        markAttendance('/users/' + user.uid + '/classes/ECO203', subjectData.ECO203.Attendance + 1, "#eco203AtteMark", subjectClass.ECO203.ClassHeld);
+                                        init(".eco203", "#eco203AttePercentage", "#eco203ProgressBar", subjectData.ECO203.Attendance + 1, subjectClass.ECO203.ClassHeld);
                                     });
                                 } else {
-                                    changeAttendaceButtonState("#eed102AtteMark");
+                                    changeAttendaceButtonState("#eco203AtteMark");
                                 }
                             }
-                            if (subjectData.CSD201) {
-                                init(".csd201", "#csd201AttePercentage", "#csd201ProgressBar", subjectData.CSD201.Attendance, subjectClass.CSD201.ClassHeld);
-                                if ((date.getDay() == 1 && date.getHours() == 22) || (date.getDay() == 2 && date.getHours() == 21) || (date.getDay() == 4 && date.getHours() == 21)) {
-                                    initButton("#csd201AtteMark", subjectData.CSD201.TimeStamp, '/users/' + user.uid + '/classes/CSD201', subjectClass.CSD201.ClassHeld + 1);
-                                    $("#csd201AtteMark").on('click', function() {
-                                        markAttendance('/users/' + user.uid + '/classes/CSD201', subjectData.CSD201.Attendance + 1, "#csd201AtteMark", subjectClass.CSD201.ClassHeld);
-                                        init(".csd201", "#ced101AttePercentage", "#csd201ProgressBar", subjectData.CSD201.Attendance + 1, subjectClass.CSD201.ClassHeld);
+                            if (subjectData.EED201) {
+                                init(".eed201", "#eed201AttePercentage", "#eed201ProgressBar", subjectData.EED201.Attendance, subjectClass.EED201.ClassHeld);
+                                if ((date.getDay() == 1 && date.getHours() == 21) || (date.getDay() == 3 && date.getHours() == 21)) {
+                                    initButton("#eed201AtteMark", subjectData.EED201.TimeStamp, '/users/' + user.uid + '/classes/EED201', subjectClass.EED201.ClassHeld + 1);
+                                    $("#eed201AtteMark").on('click', function() {
+                                        markAttendance('/users/' + user.uid + '/classes/EED201', subjectData.EED201.Attendance + 1, "#eed201AtteMark", subjectClass.EED201.ClassHeld);
+                                        init(".eed201", "#eed201AttePercentage", "#eed201ProgressBar", subjectData.EED201.Attendance + 1, subjectClass.EED201.ClassHeld);
                                     });
                                 } else {
-                                    changeAttendaceButtonState("#csd201AtteMark");
+                                    changeAttendaceButtonState("#eed201AtteMark");
                                 }
                             }
-                            if (subjectData.EED207) {
-                                init(".eed207", "#eed207AttePercentage", "#eed207ProgressBar", subjectData.EED207.Attendance, subjectClass.EED207.ClassHeld);
-                                if ((date.getDay() == 1 && (date.getHours() == 22)) || (date.getDay() == 3 && (date.getHours() == 22))) {
-                                    initButton("#eed207AtteMark", subjectData.EED207.TimeStamp, '/users/' + user.uid + '/classes/EED207', subjectClass.EED207.ClassHeld + 1);
-                                    $("#eed207AtteMark").on('click', function() {
-                                        markAttendance('/users/' + user.uid + '/classes/EED207', subjectData.EED207.Attendance + 1, "#eed207AtteMark", subjectClass.EED207.ClassHeld);
-                                        init(".eed207", "#eed207AttePercentage", "#eed207ProgressBar", subjectData.EED207.Attendance + 1, subjectClass.EED207.ClassHeld);
+                            if (subjectData.PHY101) {
+                                init(".phy101", "#phy101AttePercentage", "#phy101ProgressBar", subjectData.PHY101.Attendance, subjectClass.PHY101.ClassHeld);
+                                if ((date.getDay() == 2 && (date.getHours() == 21)) || (date.getDay() == 4 && (date.getHours() == 21))) {
+                                    initButton("#phy101AtteMark", subjectData.PHY101.TimeStamp, '/users/' + user.uid + '/classes/PHY101', subjectClass.PHY101.ClassHeld + 1);
+                                    $("#phy101AtteMark").on('click', function() {
+                                        markAttendance('/users/' + user.uid + '/classes/PHY101', subjectData.PHY101.Attendance + 1, "#phy101AtteMark", subjectClass.PHY101.ClassHeld);
+                                        init(".phy101", "#phy101AttePercentage", "#phy101ProgressBar", subjectData.PHY101.Attendance + 1, subjectClass.PHY101.ClassHeld);
                                     });
                                 } else {
-                                    changeAttendaceButtonState("#eed207AtteMark");
+                                    changeAttendaceButtonState("#phy101AtteMark");
                                 }
                             }
-                            if (subjectData.EED204) {
-                                init(".eed204", "#eed204AttePercentage", "#eed204ProgressBar", subjectData.EED204.Attendance, subjectClass.EED204.ClassHeld);
-                                if ((date.getDay() == 3 && date.getHours() == 20) || (date.getDay() == 1 && date.getHours() == 20) || (date.getDay() == 2 && (date.getHours() == 20)) || (date.getDay() == 2 && (date.getHours() == 21))) {
-                                    initButton("#eed204AtteMark", subjectData.EED204.TimeStamp, '/users/' + user.uid + '/classes/EED204', subjectClass.EED204.ClassHeld + 1);
-                                    $("#eed204AtteMark").on('click', function() {
-                                        markAttendance('/users/' + user.uid + '/classes/EED204', subjectData.EED204.Attendance + 1, "#eed204AtteMark", subjectClass.EEd204.ClassHeld);
-                                        init(".eed204", "#eed204AttePercentage", "#eed204ProgressBar", subjectData.EED204.Attendance + 1, subjectClass.EED204.ClassHeld);
+                            if (subjectData.MED201) {
+                                init(".med201", "#med201AttePercentage", "#med201ProgressBar", subjectData.MED201.Attendance, subjectClass.MED201.ClassHeld);
+                                if ((date.getDay() == 2 && date.getHours() == 22) || (date.getDay() == 4 && date.getHours() == 22)) {
+                                    initButton("#med201AtteMark", subjectData.MED201.TimeStamp, '/users/' + user.uid + '/classes/MED201', subjectClass.MED201.ClassHeld + 1);
+                                    $("#med201AtteMark").on('click', function() {
+                                        markAttendance('/users/' + user.uid + '/classes/MED201', subjectData.MED201.Attendance + 1, "#med201AtteMark", subjectClass.MED201.ClassHeld);
+                                        init(".med201", "#med201AttePercentage", "#med201ProgressBar", subjectData.MED201.Attendance + 1, subjectClass.MED201.ClassHeld);
                                     });
                                 } else {
-                                    changeAttendaceButtonState("#eed204AtteMark");
-                                }
-                            }
-                            if (subjectData.MAT104) {
-                                init(".mat104", "#mat104AttePercentage", "#mat104ProgressBar", subjectData.MAT104.Attendance, subjectClass.MAT104.ClassHeld);
-                                if ((date.getDay() == 1 && (date.getHours() == 20 || date.getHours() == 21 || date.getHours() == 22)) || (date.getDay() == 3 && (date.getHours() == 20 || date.getHours() == 21 || date.getHours() == 22)) || (date.getDay() == 5 && (date.getHours() == 21)) || (date.getDay() == 0 && (date.getHours() == 21))) {
-                                    initButton("#mat104AtteMark", subjectData.MAT104.TimeStamp, '/users/' + user.uid + '/classes/MAT104', subjectClass.MAT104.ClassHeld + 1);
-                                    $("#mat104AtteMark").on('click', function() {
-                                        markAttendance('/users/' + user.uid + '/classes/MAT104', subjectData.MAT104.Attendance + 1, "#mat104AtteMark", subjectClass.MAT104.ClassHeld);
-                                        init(".mat104", "#mat104AttePercentage", "#mat104ProgressBar", subjectData.MAT104.Attendance + 1, subjectClass.MAT104.ClassHeld);
-                                    });
-                                } else {
-                                    changeAttendaceButtonState("#mat104AtteMark");
-                                }
-                            }
-                            if (subjectData.PHY102) {
-                                init(".phy102", "#phy102AttePercentage", "#phy102ProgressBar", subjectData.PHY102.Attendance, subjectClass.PHY102.ClassHeld);
-                                if ((date.getDay() == 2 && (date.getHours() == 21)) || (date.getDay() == 5 && (date.getHours() == 22))) {
-                                    initButton("#phy102AtteMark", subjectData.PHY102.TimeStamp, '/users/' + user.uid + '/classes/PHY102', subjectClass.PHY102.ClassHeld + 1);
-                                    $("#phy102AtteMark").on('click', function() {
-                                        markAttendance('/users/' + user.uid + '/classes/PHY102', subjectData.PHY102.Attendance + 1, "#phy102AtteMark", subjectClass.PHY102.ClassHeld);
-                                        init(".phy102", "#phy102AttePercentage", "#phy102ProgressBar", subjectData.PHY102.Attendance + 1, subjectClass.PHY102.ClassHeld);
-                                    });
-                                } else {
-                                    changeAttendaceButtonState("#phy102AtteMark");
-                                }
-                            }
-                            if (subjectData.CSD204) {
-                                init(".csd204", "#csd204AttePercentage", "#csd204ProgressBar", subjectData.CSD204.Attendance, subjectClass.CSD204.ClassHeld);
-                                if ((date.getDay == 5 && (date.getHours() == 20))) {
-                                    initButton("#csd204AtteMark", subjectData.CSD204.TimeStamp, '/users/' + user.uid + '/classes/CSD204', subjectClass.CSD204.ClassHeld + 1);
-                                    $("#csd204AtteMark").on('click', function() {
-                                        markAttendance('/users/' + user.uid + '/classes/CSD204', subjectData.CSD204.Attendance + 1, "#csd204AtteMark", subjectClass.CSD204.ClassHeld);
-                                        init(".csd204", "#csd204AttePercentage", "#csd204ProgressBar", subjectData.CSD204.Attendance + 1, subjectClass.CSD204.ClassHeld);
-                                    });
-                                } else {
-                                    changeAttendaceButtonState("#csd204AtteMark");
-                                }
-                            }
-                            if (subjectData.EED205) {
-                                init(".eed205", "#eed205AttePercentage", "#eed205ProgressBar", subjectData.EED205.Attendance, subjectClass.EED205.ClassHeld);
-                                if ((date.getDay() == 2 && (date.getHours() == 22)) || (date.getDay() == 3 && (date.getHours() == 22)) || (date.getDay() == 5 && (date.getHours() == 22))) {
-                                    initButton("#eed205AtteMark", subjectData.EED205.TimeStamp, '/users/' + user.uid + '/classes/EED205', subjectClass.EED205.ClassHeld + 1);
-                                    $("#eed205AtteMark").on('click', function() {
-                                        markAttendance('/users/' + user.uid + '/classes/EED205', subjectData.EED205.Attendance + 1, "#eed205AtteMark", subjectClass.EED205.ClassHeld);
-                                        init(".eed205", "#eed205AttePercentage", "#eed205ProgressBar", subjectData.EED205.Attendance + 1, subjectClass.EED205.ClassHeld);
-                                    });
-                                } else {
-                                    changeAttendaceButtonState("#eed205AtteMark");
+                                    changeAttendaceButtonState("#med201AtteMark");
                                 }
                             }
                         }
